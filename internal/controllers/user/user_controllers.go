@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"net/http"
-	"project-name/internal/models"
-	"project-name/internal/services"
+	"github.com/Martinpasaribu/Golang-V1/internal/models"
+	"github.com/Martinpasaribu/Golang-V1/internal/services"
 
 	"github.com/gin-gonic/gin"
 )

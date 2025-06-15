@@ -1,8 +1,8 @@
 package services
 
 import (
-	"project-name/internal/models"
-	"project-name/internal/repositories"
+	"github.com/Martinpasaribu/Golang-V1/internal/models"
+	"github.com/Martinpasaribu/Golang-V1/internal/repositories"
 )
 
 type UserService struct {

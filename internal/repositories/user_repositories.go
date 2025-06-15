@@ -5,8 +5,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
-	"project-name/internal/config"
-	"project-name/internal/models"
+	"github.com/Martinpasaribu/Golang-V1/internal/config"
+	"github.com/Martinpasaribu/Golang-V1/internal/models"
 )
 
 type UserRepository struct {

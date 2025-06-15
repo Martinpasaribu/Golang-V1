@@ -1,24 +1,25 @@
-package main
+package routes
 
 import (
-	"log"
-	"golang_v1/internal/config"
-	"golang_v1/internal/routes"
+	"github.com/gin-gonic/gin" // Ganti dengan framework yang Anda pakai
+	"github.com/Martinpasaribu/Golang-V1/internal/controllers/user"
+	"github.com/Martinpasaribu/Golang-V1/internal/services"
+	"github.com/Martinpasaribu/Golang-V1/internal/repositories"
 )
 
-func main() {
-	// Initialize MongoDB
-	if err := config.InitMongoDB(); err != nil {
-		log.Fatalf("Failed to connect to MongoDB: %v", err)
-	}
-	defer config.CloseMongoDB()
+func SetupRouter() *gin.Engine {
+	r := gin.Default()
+	
+	// Initialize dependencies
+	userRepo := repositories.NewUserRepository()
+	userService := services.NewUserService(userRepo)
+	userController := controllers.NewUserController(userService)
 
-	// Setup router
-	r := routes.SetupRouter()
-
-	// Start server
-	log.Println("Server running on :8080")
-	if err := r.Run(":8080"); err != nil {
-		log.Fatalf("Failed to start server: %v", err)
+	// Routes
+	api := r.Group("/api/v1")
+	{
+		api.POST("/users", userController.Register)
 	}
+	
+	return r
 }
